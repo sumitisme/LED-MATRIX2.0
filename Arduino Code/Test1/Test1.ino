@@ -4,6 +4,9 @@ const int DClock = 3; // subject to change
 const int DLatchR = 4; // subject to change
 const int DLatchC = 5; // subject to change
 
+#define BORDERS 0 // playground is from 0 to 7
+#define BORDERE 7
+
 byte Screen[8] = {0b00000000,
                   0b00000000,
                   0b00000000,
@@ -23,12 +26,25 @@ void setup() {
 }
 
 void loop() {
-  for(int x = 0; x < 8; x++) {
-    for(int y = 0; y < 8; y++) {
-      drawpixel(x, x, 1); // coordinates and whether the bit is high or low
+  int x = 0, y = 0;
+  int velx = 1;
+  int vely = 0;
+
+  while(true) {
+    if(x < BORDERS || x > BORDERE) {
+      velx *= -1;
     }
+    
+    if(y < BORDERS || y > BORDERE) {
+      vely *= -1;
+    }
+    refreshScreen();
+    drawpixel(x, y, 1);
+    showScreen();
+    x += velx;
+    y += vely;
   }
-  showScreen();
+//  gameOver();
 }
 
 void refreshScreen() {
@@ -71,8 +87,16 @@ void showScreen() {
       digitalWrite(DLatchC, HIGH);
     
       RowCycle = RowCycle >> 1;
-      delay(20); // The simulation is not running wtf.
+      delay(20); // The simulation is not running at lower values of the delay.
     } 
+}
+
+void gameOver() {
+  for(int i = 0; i < 8; i++) {
+      drawpixel(i, i, 1);
+      drawpixel(7 - i, i, 1);
+  }
+  showScreen();
 }
 
 void drawLine(int ax, int ay, int bx, int by, bool p) {
