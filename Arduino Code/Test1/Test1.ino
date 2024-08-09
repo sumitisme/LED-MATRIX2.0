@@ -4,6 +4,8 @@ const int DClock = 3; // subject to change
 const int DLatchR = 4; // subject to change
 const int DLatchC = 5; // subject to change
 
+const int DClock2 = 13; // test
+
 const int LU = 6;
 const int LD = 7;
 
@@ -23,13 +25,13 @@ void showScreen();
 void drawpixel(int px, int py, bool p);
 
 struct position {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 struct velocity {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 byte Screen[8] = {0b00000000,
@@ -56,11 +58,11 @@ public:
     }
 
     void moveup() {
-        pos.y--;
+        pos.y -= 1;
     }
 
     void movedown() {
-        pos.y++;
+        pos.y += 1;
     }
 };
 
@@ -72,8 +74,8 @@ public:
     ball() {
         pos.x = 5;
         pos.y = 4;
-        vel.x = 1;
-        vel.y = 1;
+        vel.x = 0.5;
+        vel.y = 0.5;
     }
 
     void setball() {
@@ -83,7 +85,7 @@ public:
     void Move() {
         pos.x += vel.x;
         pos.y += vel.y;
-        delay(30);
+        delay(20);
     }
 };
 
@@ -94,6 +96,8 @@ void setup() {
       pinMode(DClock, OUTPUT);
       pinMode(DLatchR, OUTPUT);
       pinMode(DLatchC, OUTPUT);
+
+      pinMode(DClock2, OUTPUT);
 
       pinMode(LU, INPUT);
       pinMode(LD, INPUT);
@@ -119,27 +123,35 @@ void loop() {
             b.vel.x *= -1;    
         }
 
+        if((pL.pos.x == (b.pos.x - 1) && pL.pos.y == b.pos.y + 1) || (pR.pos.x == (b.pos.x + 1) && pR.pos.y == b.pos.y + 1)) {
+            b.vel.x *= -1;    
+        }
+
+        if((pL.pos.x == (b.pos.x - 1) && pL.pos.y == b.pos.y - 1) || (pR.pos.x == (b.pos.x + 1) && pR.pos.y == b.pos.y - 1)) {
+            b.vel.x *= -1;    
+        }
+
         if(RightUp == HIGH) {
             if(pR.pos.y > 0) {
-                pR.pos.y--;
+                pR.pos.y -= 1;
             }
         }
 
         if(LeftUp == HIGH) {
             if(pL.pos.y > 0) {
-                pL.pos.y--;
+                pL.pos.y -= 1;
             }
         }
 
         if(RightDown == HIGH) {
             if(pR.pos.y < 7) {
-                pR.pos.y++;
+                pR.pos.y += 1;
             }
         }
 
         if(LeftDown == HIGH) {
             if(pL.pos.y < 7) {
-                pL.pos.y++;   
+                pL.pos.y += 1;   
             }
         }
 
@@ -198,17 +210,19 @@ void showScreen() {
       ColCycle = Screen[i];
 
       digitalWrite(DLatchC, LOW);
-      shiftOut(DSCol, DClock, LSBFIRST, ColCycle);
-      digitalWrite(DLatchC, HIGH);
-      
       digitalWrite(DLatchR, LOW);
-      shiftOut(DSRow, DClock, LSBFIRST, RowCycle);
+
+      shiftOut(DSRow, DClock2, LSBFIRST, RowCycle);
+      shiftOut(DSCol, DClock, LSBFIRST, ColCycle);
+      //shiftOut(DSCol, DClock, LSBFIRST, ColCycle);
+      
+      digitalWrite(DLatchC, HIGH);
       digitalWrite(DLatchR, HIGH);
       
       
       RowCycle = RowCycle >> 1;
       
-      delay(3); // The simulation is not running at lower values of the delay.
+      delay(1); // The simulation is not running at lower values of the delay.
     } 
 }
 
