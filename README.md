@@ -1,8 +1,7 @@
 # LED MATRIX <br>
 <br>
     This is a project on an LED matrix display. The project is for an 8x8 display. I do not recommend you work with the PCB given but it can act as a reference point if you do intend to make this. The PCB tracing was done hastily and was left to the "auto router" itself. It isn't complete work. There are other issues with the delay and inputs but it is minor. <br>
-<br><br>
-## Parts List
+# Parts List
 <br>
     <ul>
         <li> Shift registers (74HC595) * 2 </li>
@@ -14,8 +13,7 @@
         <li> NPN transistors (BC547) * 8 </li>
         <li> Other miscellaneous stuff (resistors of different values. This is mentioned in the schematic. There was minor deviation throughout it during the project however) </li>
     </ul>
-<br>
-## Theory for the project:
+# Theory for the project:
 <br>
 <br>
 <b>Multiplexing a dot matrix display</b>
