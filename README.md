@@ -15,6 +15,11 @@
     </ul>
 # Theory for the project:
 <br>
+
+
+https://github.com/user-attachments/assets/6d31fd68-2e11-4bf4-ae72-2f9fa6ba7469
+
+
 <br>
 <b>Multiplexing a dot matrix display</b>
 <br>
