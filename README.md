@@ -21,12 +21,15 @@
 https://github.com/user-attachments/assets/6d31fd68-2e11-4bf4-ae72-2f9fa6ba7469
 
 <br>
+
 # Theory for the project: <br>
 <br>
-<b>Multiplexing a dot matrix display</b>
+
+## Multiplexing a dot matrix display
 <br>
 <br>
-<b>Forward Biasing and Reverse Biasing of LEDs</b>
+
+## Forward Biasing and Reverse Biasing of LEDs
 <br>
 <br>
 
