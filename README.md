@@ -14,13 +14,14 @@
         <li> NPN transistors (BC547) * 8 </li>
         <li> Other miscellaneous stuff (resistors of different values. This is mentioned in the schematic. There was minor deviation throughout it during the project however) </li>
     </ul>
-# Theory for the project:
+
 <br>
 
 
 https://github.com/user-attachments/assets/6d31fd68-2e11-4bf4-ae72-2f9fa6ba7469
 
-
+<br>
+# Theory for the project: <br>
 <br>
 <b>Multiplexing a dot matrix display</b>
 <br>
@@ -28,11 +29,14 @@ https://github.com/user-attachments/assets/6d31fd68-2e11-4bf4-ae72-2f9fa6ba7469
 <b>Forward Biasing and Reverse Biasing of LEDs</b>
 <br>
 <br>
-<b>Shift Registers</b>
+
+## Shift Registers
 <br>
 <br>
-<b>Operation of BJTs as switches</b>
+
+## Operation of BJTs as switches
 <br>
 <br>
-<b>Arduino programming</b>
+
+## Arduino programming
 <br>
